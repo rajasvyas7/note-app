@@ -1,16 +1,6 @@
 import mongoose from "mongoose";
 import Note from "../models/notebookModel";
 
-exports.getNote = (req, res) => {
-  Note.findById(req.params.noteId, (err, note) => {
-    if (err) {
-      res.send(err);
-    }
-
-    res.json(note);
-  });
-};
-
 exports.getAllNotes = (req, res) => {
   Note.find({}, (err, notes) => {
     if (err) {
@@ -29,6 +19,16 @@ exports.createNote = (req, res) => {
     }
 
     res.json(Note);
+  });
+};
+
+exports.getNote = (req, res) => {
+  Note.findById(req.params.noteId, (err, note) => {
+    if (err) {
+      res.send(err);
+    }
+
+    res.json(note);
   });
 };
 
